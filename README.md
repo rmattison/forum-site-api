@@ -1,26 +1,15 @@
-# Foobar
+# Forum Site API
 
-Foobar is a Python library for dealing with word pluralization.
+This API is used to access and create forum post data from the Forum Site database.
 
-## Installation
+## Description
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+By accessing the Web API endpoints, you have the ability to create a post, get one or all posts, update a post, and delete a post. The API connects to the database using a class library named DBAccess. 
 
-```bash
-pip install foobar
-```
+### Features
 
-## Usage
+The database connection is created using Dapper and sanitized using parameterised queries.
 
-```python
-import foobar
-
-# returns 'words'
-foobar.pluralize('word')
-
-# returns 'geese'
-foobar.pluralize('goose')
-
-# returns 'phenomenon'
-foobar.singularize('phenomena')
+```csharp
+connection.Query<Post>("SELECT * FROM Posts WHERE id = @id", new { id = id });
 ```
