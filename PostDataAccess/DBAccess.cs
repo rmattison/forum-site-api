@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using ForumSiteAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -22,7 +23,7 @@ namespace PostDataAccess
         {
             using (IDbConnection connection = new SqlConnection(CustomConfig.connectionString))
             {
-                return (List<Post>)connection.Query<Post>("SELECT * FROM Posts WHERE id = @id", new { id = id });
+                return (List<Post>)connection.Query<Post>("SELECT * FROM Posts WHERE id = @Id", new { Id = id });
             }
         }
 
@@ -30,7 +31,13 @@ namespace PostDataAccess
         {
             using (IDbConnection connection = new SqlConnection(CustomConfig.connectionString))
             {
-                connection.Query<Post>("INSERT INTO Posts (title, description) VALUES (@Title, @Description);", new { Title = post.title, Description = post.description });
+                if (post.posted_by == "")
+                {
+                    post.posted_by = "anon";
+                }
+
+                connection.Query<Post>("INSERT INTO Posts (title, description, posted_by) VALUES (@Title, @Description, @PostedBy);", 
+                    new { Title = post.title, Description = post.description, PostedBy = post.posted_by });
             }
         }
 
@@ -46,8 +53,23 @@ namespace PostDataAccess
         {
             using (IDbConnection connection = new SqlConnection(CustomConfig.connectionString))
             {
-                connection.Query<Post>($"UPDATE Posts SET description = @Description WHERE id = @Id", new { Description = post.description, Id = id });
+                connection.Query<Post>("UPDATE Posts SET description = @Description WHERE id = @Id", new { Description = post.description, Id = id });
                 return post;
+            }
+        }
+
+        public void VotePost(int id, Vote vote)
+        {
+            using (IDbConnection connection = new SqlConnection(CustomConfig.connectionString))
+            {
+                if (vote.up)
+                {
+                    connection.Query<Post>("UPDATE Posts SET upvotes = upvotes+1 WHERE id = @Id", new { Id = id });
+                } else
+                {
+                    connection.Query<Post>("UPDATE Posts SET upvotes = upvotes-1 WHERE id = @Id", new { Id = id });
+                }
+                
             }
         }
     }

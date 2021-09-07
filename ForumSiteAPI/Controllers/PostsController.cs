@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using ForumSiteAPI.Models;
 using PostDataAccess;
 
 namespace ForumSiteAPI.Controllers
@@ -15,10 +16,6 @@ namespace ForumSiteAPI.Controllers
         List<Post> posts = new List<Post>();
         DBAccess db = new DBAccess();
 
-        // PUT: api/Posts/5
-        
-
-
         // GET: api/Posts
         [HttpGet]
         public List<Post> Get()
@@ -28,7 +25,6 @@ namespace ForumSiteAPI.Controllers
         }
 
         // GET: api/Posts/5
-        
         [HttpGet]
         public List<Post> Get(int id)
         {
@@ -45,10 +41,20 @@ namespace ForumSiteAPI.Controllers
             return post;
         }
 
+        // PUT: api/Posts/5
         [HttpPut]
         public Post Put(int id, Post post)
         {
             return db.UpdatePost(id, post);
+        }
+
+        [Route("api/posts/{id}/vote")]
+        [HttpPut]
+        [EnableCors(origins: "http://127.0.0.1:5501", headers: "*", methods: "*")]
+        public string PutVote(int id, Vote vote)
+        {
+            db.VotePost(id, vote);
+            return "Success";
         }
 
         // DELETE: api/Posts/5
