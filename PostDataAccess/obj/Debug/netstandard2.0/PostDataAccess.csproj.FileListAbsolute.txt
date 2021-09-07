@@ -1,0 +1,11 @@
+C:\Users\treet\source\repos\ForumSiteAPI\PostDataAccess\bin\Debug\netstandard2.0\PostDataAccess.dll.config
+C:\Users\treet\source\repos\ForumSiteAPI\PostDataAccess\bin\Debug\netstandard2.0\PostDataAccess.deps.json
+C:\Users\treet\source\repos\ForumSiteAPI\PostDataAccess\bin\Debug\netstandard2.0\PostDataAccess.dll
+C:\Users\treet\source\repos\ForumSiteAPI\PostDataAccess\bin\Debug\netstandard2.0\PostDataAccess.pdb
+C:\Users\treet\source\repos\ForumSiteAPI\PostDataAccess\obj\Debug\netstandard2.0\PostDataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\treet\source\repos\ForumSiteAPI\PostDataAccess\obj\Debug\netstandard2.0\PostDataAccess.AssemblyInfoInputs.cache
+C:\Users\treet\source\repos\ForumSiteAPI\PostDataAccess\obj\Debug\netstandard2.0\PostDataAccess.AssemblyInfo.cs
+C:\Users\treet\source\repos\ForumSiteAPI\PostDataAccess\obj\Debug\netstandard2.0\PostDataAccess.csproj.CoreCompileInputs.cache
+C:\Users\treet\source\repos\ForumSiteAPI\PostDataAccess\obj\Debug\netstandard2.0\PostDataAccess.dll
+C:\Users\treet\source\repos\ForumSiteAPI\PostDataAccess\obj\Debug\netstandard2.0\PostDataAccess.pdb
+C:\Users\treet\source\repos\ForumSiteAPI\PostDataAccess\obj\Debug\netstandard2.0\PostDataAccess.csproj.AssemblyReference.cache
