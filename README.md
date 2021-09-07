@@ -13,3 +13,6 @@ The database connection is created using Dapper and sanitized using parameterise
 ```csharp
 connection.Query<Post>("SELECT * FROM Posts WHERE id = @id", new { id = id });
 ```
+
+## Architecture
+![alt text](https://i.ibb.co/DKbQTX9/Architecture.png)
