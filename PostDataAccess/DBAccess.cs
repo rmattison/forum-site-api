@@ -22,7 +22,7 @@ namespace PostDataAccess
         {
             using (IDbConnection connection = new SqlConnection(CustomConfig.connectionString))
             {
-                return (List<Post>)connection.Query<Post>($"SELECT * FROM Posts WHERE id = {id}");
+                return (List<Post>)connection.Query<Post>("SELECT * FROM Posts WHERE id = @id", new { id = id });
             }
         }
 
@@ -30,7 +30,7 @@ namespace PostDataAccess
         {
             using (IDbConnection connection = new SqlConnection(CustomConfig.connectionString))
             {
-                connection.Query<Post>($"INSERT INTO Posts (title, description) VALUES ('{post.title}', '{post.description}');");
+                connection.Query<Post>("INSERT INTO Posts (title, description) VALUES (@Title, @Description);", new { Title = post.title, Description = post.description });
             }
         }
 
@@ -38,7 +38,7 @@ namespace PostDataAccess
         {
             using (IDbConnection connection = new SqlConnection(CustomConfig.connectionString))
             {
-                connection.Query<Post>($"DELETE FROM Posts WHERE id = {id}");
+                connection.Query<Post>("DELETE FROM Posts WHERE id = @Id", new { Id = id });
             }
         }
 
@@ -46,7 +46,7 @@ namespace PostDataAccess
         {
             using (IDbConnection connection = new SqlConnection(CustomConfig.connectionString))
             {
-                connection.Query<Post>($"UPDATE Posts SET description = '{post.description}' WHERE id = {id}");
+                connection.Query<Post>($"UPDATE Posts SET description = @Description WHERE id = @Id", new { Description = post.description, Id = id });
                 return post;
             }
         }
