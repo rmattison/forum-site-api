@@ -15,4 +15,4 @@ connection.Query<Post>("SELECT * FROM Posts WHERE id = @id", new { id = id });
 ```
 
 ## Architecture
-![alt text](https://i.ibb.co/DKbQTX9/Architecture.png)
+![alt text](https://i.ibb.co/3RbCLW0/arch.png)
